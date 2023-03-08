@@ -1,0 +1,49 @@
+{
+  "uid": {
+    "__TYPE__": "UIDContent",
+    "value": "stuck"
+  },
+  "title": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "heading1",
+        "content": {
+          "text": "Leather"
+        }
+      }
+    ]
+  },
+  "cover": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72",
+      "width": 4010,
+      "height": 4010
+    },
+    "url": "https://images.unsplash.com/photo-1607582278038-6bebbd4d7b72",
+    "width": 4010,
+    "height": 4010,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
+  },
+  "description": {
+    "__TYPE__": "StructuredTextContent",
+    "value": [
+      {
+        "type": "paragraph",
+        "content": {
+          "text": "Adipisicing exercitation eiusmod et ad magna pariatur aliquip cillum velit laboris. Enim duis consectetur id irure ea sunt officia tempor. Quis amet cillum cupidatat deserunt laborum pariatur ipsum do irure amet aliqua esse."
+        }
+      }
+    ]
+  }
+}
