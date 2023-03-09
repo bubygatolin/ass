@@ -11,7 +11,7 @@ import Image from 'next/image';
 
 import { getPrismicClient } from '../../services/prismic';
 import Prismic from '@prismicio/client';
-import { RichText} from 'prismic-dom'; 
+import * as prismicH from '@prismicio/helpers';
 
 import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight} from 'react-icons/fi';
 
@@ -61,7 +61,7 @@ export default function Posts({ posts: postsBlog, page, totalPage }: PostsProps)
     const getPosts = response.results.map( post => {
       return {
         slug: post.uid,
-        title: RichText.asText(post.data.title),
+        title: prismicH.asText(post.data.title),
         description: post.data.description.find((content: { type: string; }) => content.type === 'paragraph')?.text ?? '',
         cover: post.data.cover.url,
         updatedAt: new Date (post.last_publication_date).toLocaleDateString('pt-BR', {
@@ -149,7 +149,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const posts = response.results.map( post => {
     return {
       slug: post.uid,
-      title: RichText.asText(post.data.title),
+      title: prismicH.asText(post.data.title),
       description: post.data.description.find((content: { type: string; }) => content.type === 'paragraph')?.text ?? '',
       cover: post.data.cover.url,
       updatedAt: new Date (post.last_publication_date).toLocaleDateString('pt-BR', {

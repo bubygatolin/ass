@@ -6,7 +6,7 @@ import { getPrismicClient } from '../../services/prismic';
 import Head from 'next/head';
 import Image from 'next/image';
 
-import { RichText} from 'prismic-dom'; 
+import * as prismicH from '@prismicio/helpers'
 
 
 
@@ -69,8 +69,8 @@ export const getServerSideProps: GetServerSideProps =async ({req, params}) => {
 
     const post = {
         slug: slug,
-        title: RichText.asText(response.data.title),
-        description: RichText.asHtml(response.data.description),
+        title: prismicH.asText(response.data.title),
+        description: prismicH.asHTML(response.data.description),
         cover: response.data.cover.url,
         updateAt: new Date(response.last_publication_date).toLocaleString('pt-BR',{
             day: '2-digit',

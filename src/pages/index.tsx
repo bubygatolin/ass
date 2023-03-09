@@ -8,8 +8,7 @@ import thumb from '../../public/images/thumb.jpeg';
 
 import { getPrismicClient } from '../services/prismic';
 import Prismic from '@prismicio/client';
-import { RichText } from 'prismic-dom';
-
+import * as prismicH from '@prismicio/helpers'
 type Content = {
   title: string;
   titleContent: string;
@@ -27,7 +26,7 @@ interface ContentProps{
 }
 
 export default function Home({ content }: ContentProps) {
-  console.log(content);
+  
   
   return (
    <>
@@ -76,10 +75,8 @@ export default function Home({ content }: ContentProps) {
 
       <div className={styles.nextLevelContent}>
         <Image quality={100} src={thumb} alt="Tecnologias" />
-        <h2> 
-Nossa metodologia capta, através de informações fornecidas por nossos clientes, como é a interação entre as partes relacionadas e seus objetivos, desde a governança, passando pela satisfação de clientes, funcionários e fornecedores, chegando no engajamento de cada pilar ESG;  
-
-Isso é possível porque o instituto Scompany realizou ampla pesquisa a normas brasileiras e internacionais relacionadas ao ESG (Environmental Social and Governance Corporate).</h2>
+        <h2>Nossa metodologia capta, através de informações fornecidas por nossos clientes, como é a interação entre as partes relacionadas e seus objetivos, desde a governança, passando pela satisfação de clientes, funcionários e fornecedores, chegando no engajamento de cada pilar ESG;
+        Isso é possível porque o instituto Scompany realizou ampla pesquisa a normas brasileiras e internacionais relacionadas ao ESG (Environmental Social and Governance Corporate).</h2>
         <span>E você vai perder a chance de evoluir de uma vez por todas?</span>
         <a href={content.linkAction}>
           <button>Fique por dentro!</button>
@@ -109,14 +106,14 @@ export const getStaticProps: GetStaticProps = async () => {
   } = response.results[0].data;
   
   const content = {
-    title: RichText.asText(title),
-    titleContent: RichText.asText(sub_title),
+    title: prismicH.asText(title),
+    titleContent: prismicH.asText(sub_title),
     linkAction: link_action.url,    
-    mobileTitle: RichText.asText(mobile), 
-    mobileContent: RichText.asText(mobile_content),
+    mobileTitle: prismicH.asText(mobile), 
+    mobileContent: prismicH.asText(mobile_content),
     mobileBanner: mobile_banner.url,
-    webTitle: RichText.asText(title_web),
-    webContent: RichText.asText(web_content),
+    webTitle: prismicH.asText(title_web),
+    webContent: prismicH.asText(web_content),
     webBanner: web_banner.url,
     
   };
