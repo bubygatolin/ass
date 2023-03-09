@@ -58,10 +58,23 @@ export default function Posts({ posts: postsBlog, page, totalPage }: PostsProps)
       return;
     }
 
-    
+    const getPosts = response.results.map( post => {
+      return {
+        slug: post.id,
+        title: prismicH.asText(post.data.title),
+        description: post.data.description.find((content: { type: string; }) => content.type === 'paragraph')?.text ?? '',
+        cover: post.data.cover.url,
+        updatedAt: new Date (post.data.last_publication_date).toLocaleDateString('pt-BR', {
+          day: '2-digit',
+          month: 'long',
+          year: 'numeric'
+        })
+      }
+    })
 
     setCurrentPage(pageNumber)
-    
+    setPosts(getPosts)
+  
   }
 
   return(
