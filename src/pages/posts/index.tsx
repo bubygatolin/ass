@@ -17,7 +17,7 @@ import { FiChevronLeft, FiChevronsLeft, FiChevronRight, FiChevronsRight} from 'r
 
 
 type Post = {
-  slug: string;
+  slug: string ;
   title: string;
   cover: string;
   description: string;
@@ -58,18 +58,10 @@ export default function Posts({ posts: postsBlog, page, totalPage }: PostsProps)
       return;
     }
 
-    const getPosts = response.results.map( post => {
-      return {
-        slug: post.uid,
-        title: prismicH.asText(post.data.title),
-        description: post.data.description.find((content: { type: string; }) => content.type === 'paragraph')?.text ?? '',
-        cover: post.data.cover.url,
-        
-      }
-    })
+    
 
-    setCurrentPage(pageNumber);
-    setPosts(getPosts);
+    setCurrentPage(pageNumber)
+    
   }
 
   return(
