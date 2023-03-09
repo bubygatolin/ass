@@ -57,7 +57,7 @@ export const getServerSideProps: GetServerSideProps =async ({req, params}) => {
     const  slug  = params?.slug;
     const prismic = getPrismicClient(req);
 
-    const response = await prismic.getByUID('post', String (slug), {});
+    const response = await prismic.getByUID('post', String(slug), {});
 
     if(!response){
         return{
@@ -73,7 +73,7 @@ export const getServerSideProps: GetServerSideProps =async ({req, params}) => {
         title: prismicH.asText(response.data.title),
         description: prismicH.asHTML(response.data.description),
         cover: response.data.cover.url,
-        updateAt: new Date(response.last_publication_date).toLocaleString('pt-BR',{
+        updateAt: new Date(response.data.last_publication_date).toLocaleString('pt-BR',{
             day: '2-digit',
             month: 'long',
             year: 'numeric'

@@ -8,7 +8,7 @@ import { getPrismicClient } from "../../services/prismic";
 import Prismic from '@prismicio/client';
 import { FaInstagram, FaFacebook, FaLinkedin} from 'react-icons/fa'
 
-import { RichText } from 'prismic-dom';
+import * as prismicH from '@prismicio/helpers';
 
 type Content ={
     title: string;
@@ -81,8 +81,8 @@ export const getStaticProps: GetStaticProps = async () => {
     } = response.results[0].data;
     
     const content = {
-      title: RichText.asText(title),
-      description: RichText.asText(description),
+      title: prismicH.asText(title),
+      description: prismicH.asText(description),
       banner: banner.url,
       facebook: facebook.url,
       instagram: instagram.url,
