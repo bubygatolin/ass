@@ -10,6 +10,7 @@ import * as prismicH from '@prismicio/helpers'
 
 
 
+
 interface PostProps{
     post:{
         slug: string;
@@ -53,7 +54,7 @@ export default function Post({ post } : PostProps){
 }
 
 export const getServerSideProps: GetServerSideProps =async ({req, params}) => {
-    const { slug } = params;
+    const  slug  = params?.slug;
     const prismic = getPrismicClient(req);
 
     const response = await prismic.getByUID('post', String (slug), {});
