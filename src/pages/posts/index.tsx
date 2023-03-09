@@ -64,11 +64,7 @@ export default function Posts({ posts: postsBlog, page, totalPage }: PostsProps)
         title: prismicH.asText(post.data.title),
         description: post.data.description.find((content: { type: string; }) => content.type === 'paragraph')?.text ?? '',
         cover: post.data.cover.url,
-        updatedAt: new Date (post.data.last_publication_date).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: 'long',
-          year: 'numeric'
-        })
+        
       }
     })
 
